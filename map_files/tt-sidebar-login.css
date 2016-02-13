@@ -1,0 +1,115 @@
+.widget_sidebarlogin #loginform{padding:11px 11px 0 0;}
+.widget_sidebarlogin #loginform #user_login, .widget_sidebarlogin #loginform #user_pass{
+	border-color: #F1F1F1;
+	border-top-color: #DDD;
+	border-left-color: #DDD;
+	background: #F9F9F9;
+	color: #515151;
+	font: 12px Tahoma;
+	padding: 4px 7px;
+	margin-bottom: 10px;
+	border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;
+	display: block;
+	width: 95%;
+	height: 24px;
+}
+.widget_sidebarlogin #loginform #user_login:hover, .widget_sidebarlogin #loginform #user_pass:hover { color:#000;}
+.widget_sidebarlogin #loginform #user_login:focus, .widget_sidebarlogin #loginform #user_pass:focus { background:#FFF; color:#000;}
+.widget_sidebarlogin #loginform .login-button{ margin-right:20px;}
+.widget_sidebarlogin #loginform p{padding-bottom:0;}
+
+.widget_sidebarlogin #loginform #wp-submit.button-primary, .widget_sidebarlogin .widget_sidebarlogin ul#sidebar-login-links li{
+	border: 1px solid #D9D9D9;
+	background: #FBFBFB;
+	background: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#FBFBFB),color-stop(100%,#EEE ));
+	background: -webkit-linear-gradient(top,#FBFBFB 0,#EEE 100%);
+	background: -moz-linear-gradient(top,#FBFBFB 0,#EEE 100%);
+	background: -o-linear-gradient(top,#FBFBFB 0,#EEE 100%);
+	background: -ms-linear-gradient(top,#FBFBFB 0,#EEE 100%);
+	background: linear-gradient(top,#FBFBFB 0,#EEE 100%);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3),inset 0 1px 0 rgba(255, 255, 255, 0.5);
+	color: black;
+	text-shadow: 0 1px 0 white;
+	height: 30px;
+	line-height: 30px;
+	width:auto;
+	font-size: 13px;
+	padding: 0 15px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-transition: background .40s;
+	-moz-transition: background .40s;
+	-o-transition: background .40s;
+	transition: background .40s;
+	position:relative;
+}
+.widget_sidebarlogin #loginform #wp-submit.button-primary:hover, .widget_sidebarlogin .widget_sidebarlogin ul#sidebar-login-links li:hover {
+	background: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#FFF),color-stop(100%,#f8f8f8));
+	background: -webkit-linear-gradient(top,#FFF 0,#f8f8f8 100%);
+	background: -moz-linear-gradient(top,#FFF 0,#f8f8f8 100%);
+	background: -o-linear-gradient(top,#FFF 0,#f8f8f8 100%);
+	background: -ms-linear-gradient(top,#FFF 0,#f8f8f8 100%);
+	background: linear-gradient(top,#FFF ,#f8f8f8 100%);
+}
+.widget_sidebarlogin #loginform #wp-submit.button-primary:active{top:2px;}
+
+.widget_sidebarlogin .avatar_container {
+	float: left;
+}
+ul#sidebar-login-links{
+	text-align: left;
+
+}
+ul#sidebar-login-links-left{
+	text-align: left;
+}
+ul#sidebar-login-links li, ul#sidebar-login-links-left li{
+	display: inline;	
+	list-style-type: none;
+	text-align: left;
+	padding: 5px 5px 5px 0;
+	background: none;
+	border: none;
+}
+
+.widget_sidebarlogin  ul#sidebar-login-links li a{
+	text-decoration: none;
+}
+
+.sidebar-login-info{
+	width: 100%;
+	height: auto;
+	float: left;
+	display: block;
+}
+
+.widget_sidebarlogin .sidebar-login-info .widget-container p, .widget_sidebarlogin .sidebar-login-info  p{
+	text-align: left;
+	margin: 0 10px 10px 0;
+	line-height: 16px;
+}
+
+.widget_sidebarlogin p#reglost{
+	margin-top: 10px;
+}
+
+.widget_sidebarlogin p#reglost a{
+	margin-right: 5px;
+}
+
+.widget_sidebarlogin .sidebar-login-info .avatar_container img {
+	padding: 3px;
+	border: 5px solid #ddd;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	margin-right: 8px;
+	margin-top: 5px;
+	float: left;
+}
+
+.widget_sidebarlogin #message.error.fade p{
+	width: 100%;
+	box-shadow: 0px 0px 20px #FF0000;
+	text-align: center;
+}

@@ -1,0 +1,29 @@
+/*
+ Theme Name:     DH150 birdfield
+ Description:    Child theme of Birdfield
+ Author:         yohbert
+ Template:       birdfield
+ Version:        1.0.0
+*/
+
+@import url("../birdfield/style.css");
+
+#wpadminbar{top:77px; background:none repeat scroll 0% 0% #434541; z-index:9999;}
+
+body.admin-bar #branding-wrap{top: 28px;} 
+
+#back-top {z-index:99999}
+
+#header {z-index:999999}
+
+#footer #back-top {left:90%}
+
+#wp-submit {color:black;}
+
+#menu-wrapper .menu .current-menu-ancestor > a {
+    font-weight: inherit !important;
+    color: silver !important;}
+
+#user_pass {margin-left: 6px; color: black;}
+
+#user_login {color:black;}

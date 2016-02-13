@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        @charset "UTF-8";
+        @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic");
+        html {
+            height: 100%
+        }
+        
+        body {
+            font-family: "Open Sans", Helvetica, sans-serif;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            background: #305ae5;
+            color: #bbb;
+        }
+        
+        #map_canvas {
+            height: 100%;
+            margin-left: 300px;
+        }
+        
+        #side_panel {
+            position: absolute;
+            width: 280px;
+            height: 100%;
+            overflow: auto;
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        //global variables
+        var map;
+        var infowindow = new google.maps.InfoWindow();
+
+        // declare namespace
+        var nzRoadInfo = {};
+
+        //function that runs when the page loads
+        nzRoadInfo.initialize = function() {
+
+            //center lat/lon
+            var latlng = new google.maps.LatLng(-43.5300, 172.6203);
+
+            //map configutations
+            var myOptions = {
+                zoom: 13,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            
+            
+            
+
+            //create the map
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+            //load geojson layer
+            map.data.loadGeoJson('geoJson/chch.geojson');
+
+            // When the user clicks, open an infowindow
+            map.data.addListener('click', function(event) {
+
+                var myHTML = "<h4>Road Event ID: ";
+                myHTML += event.feature.getProperty("id");
+                myHTML += "</h4></br><h4>Description: ";
+                myHTML += event.feature.getProperty("description");
+                myHTML += "</h4></br><h4>Status: ";
+                myHTML += event.feature.getProperty("status");
+                myHTML += "</h4>";
+
+                
+                
+                '<button onclick="myFunction()">Click me</button>'
+                
+
+                infowindow.setContent("<div style='width:150px;'>" + myHTML + "</div>");
+                // position the infowindow on the marker
+
+                infowindow.setPosition(event.latLng);
+
+                // anchor the infowindow on the marker
+                infowindow.setOptions({
+                    pixelOffset: new google.maps.Size(0, -30)
+                });
+                
+                infowindow.open(map);
+            });
+            
+            map.data.setStyle({
+                fillColor: 'red',
+                strokeWeight: 5,
+                strokeColor: 'red',
+                fillOpacity: 0.5
+            });
+            
+            function testFunc(){
+                alert("reached!");   
+            }
+            
+            
+            
+
+        }
+    </script>
+</head>
+<!-- body of the page with an onload to run the initialize function -->
+
+<body onload="nzRoadInfo.initialize()">
+
+    <!-- side panel div container -->
+    <div id="side_panel">
+        <h1>NZ ROAD INFO</h1>
+        <ul>
+            <li><a href="SHClosures.html">NZ Road Info</a></li>
+            <li><a href="#">Christchurch Traffic Map</a></li>
+            <li>Auckland Traffic Map</li>
+            <li>Suggestions</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+    <div id="map_canvas"></div>
+</body>
+
+</html>
