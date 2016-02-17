@@ -7,12 +7,11 @@ curl_setopt($curl_h, CURLOPT_HTTPHEADER, array(
 );
 curl_setopt($curl_h, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($curl_h);
-file_put_contents("SHClosures.xml", $response);
+file_put_contents("../XML/SHClosures.xml", $response);
 
 ####### XML LOAD ####### XML LOAD ####### XML LOAD ####### XML LOAD #####
 
-$xml = simplexml_load_file("SHClosures.xml");
-
+$xml = simplexml_load_file("../XML/SHClosures.xml");
 $result = $xml->xpath("//tns:roadEvent");
 $count = sizeof($result);
 
