@@ -1,0 +1,27 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+            [[172.55224585533, -43.4941837955], [172.55194544792, -43.494557386618], [172.5500357151, -43.493452172867], [172.54907011986, -43.49519559943], [172.54861950874, -43.494977673862], [172.54945635796, -43.49320310782], [172.5476539135, -43.492004467917], [172.54716038704, -43.492922908415], [172.54675269127, -43.492798374929], [172.54733204842, -43.491599726993], [172.54685997963, -43.491132714864], [172.5472676754, -43.490852505853], [172.54769682884, -43.491194983357], [172.54907011986, -43.490058573262], [172.54954218864, -43.490307651277], [172.54810452461, -43.491412922575], [172.54977822304, -43.492627140966], [172.55065798759, -43.491350654307], [172.55110859871, -43.491506324856], [172.55035758018, -43.492954041746], [172.55224585533, -43.4941837955]]
+                ]
+        },
+        "properties": {
+            "id": "29818",
+            "location": "null",
+            "description": "Memorial Ave, Harewood, Christchurch. Earthworks are to be conducted to remove land fill beneath the footpath and shoulder on Memorial Ave between Peter Leeming Dr and Russley Rd on the North side.\r\n\r\nA shoulder closure & footpath closure will be in place, cyclist will be merged with vehicle traffic.\r\n\r\nA pedestrian crossing will be established prior to the commencement of works to allow a crossing point for pedestrians during the works.\r\n\r\nThis method of TM was chosen as it would cause the least amount of disturbance to traffic.\r\n\r\nThe pedestrian crossing will be established during night work hours (1900 ? 0700)\r\n\r\nEarthworks will be conducted during day work hours (0900 ? 1600). Not Significant. Time(s) of day affected: All Day (24 hours a day)",
+            "planned": "null",
+            "alternativeRoute": "N\/A",
+            "eventType": "Road Works",
+            "expectedResolution": "null",
+            "impact": "Pedestrians Affected. Cyclists Affected. Shoulder Closure. ",
+            "locationAreas": "null",
+            "status": "null",
+            "eventCreated": "2016-03-06",
+            "eventModified": null
+        }
+    
+    }]
+}

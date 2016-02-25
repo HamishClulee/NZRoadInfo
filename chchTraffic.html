@@ -64,7 +64,7 @@
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
             //load geojson layer
-            map.data.loadGeoJson('geoJson/chchTraffic.geojson');
+            map.data.loadGeoJson('Json/test.json');
 
             // When the user clicks, open an infowindow
             map.data.addListener('click', function(event) {
@@ -97,18 +97,11 @@
             
             map.data.setStyle({
                 fillColor: 'red',
-                strokeWeight: 5,
+                strokeWeight: 0.5,
                 strokeColor: 'red',
                 fillOpacity: 0.5
             });
             
-            function testFunc(){
-                alert("reached!");   
-            }
-            
-            
-            
-
         }
     </script>
 </head>
