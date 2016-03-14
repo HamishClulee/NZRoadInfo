@@ -1,21 +1,15 @@
 <?php
 
-$curl_h = curl_init('https://infoconnect1.highwayinfo.govt.nz/ic/jbi/TREIS/REST/FeedService/');
-curl_setopt($curl_h, CURLOPT_HTTPHEADER, array(
-    'username: mjwynyard', 'password: Copper2004'
-        )
-);
-curl_setopt($curl_h, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($curl_h);
-file_put_contents("../XML/SHClosures.xml", $response);
+echo "SHXMLToJSON start - encodes and builds SHClosures json \n";
 
-####### XML LOAD ####### XML LOAD ####### XML LOAD ####### XML LOAD #####
+######## PROPS ######## PROPS ######## PROPS ######## PROPS ########
+
+ini_set('allow_url_fopen ','ON');
+
 
 $xml = simplexml_load_file("../XML/SHClosures.xml");
 $result = $xml->xpath("//tns:roadEvent");
 $count = sizeof($result);
-
-######## PROPS ######## PROPS ######## PROPS ######## PROPS ########
 
 $ids = $xml->xpath("//tns:eventId");
 $locations = $xml->xpath("//tns:locationArea");
@@ -63,12 +57,14 @@ $sizeT = sizeof($finalPoints);
 $des = array(
     0 => array("pipe", "r"),
     1 => array("pipe", "w"),
-    2 => array("file", "/tmp/error-output.txt", "a")
+    2 => array("file", "error-output.txt", "a")
 );
+
+echo file_exists('../C++/NZMGtransform');
 
 for ($i = 0; $i < $sizeT; $i++) {
 
-    $process = proc_open('../C++/NZMGtransform', $des, $pipes);
+    $process = proc_open('/var/www/nzroadinfo.xyz/public_html/C++/NZMGtransform', $des, $pipes);
 
     if (is_resource($process)) {
 
@@ -87,21 +83,14 @@ for ($i = 0; $i < $c; $i++) {
     $splitCoOrds[$i] = explode(" ", $coords[$i]);
 }
 
-
-
-
-
 ####### JSON ENCODE ####### JSON ENCODE ####### JSON ENCODE #######
 
-
-
-$toBeEncoded = array("type" => "FeatureCollection",
+$toBeEncoded1 = array("type" => "FeatureCollection",
     "features" => []);
-
 
 for ($i = 0; $i < $count; $i++) {
 
-    $toBeEncoded[features][$i] = array("type" => "Feature",
+    $toBeEncoded1['features'][$i] = array("type" => "Feature",
         "geometry" => [],
         "properties" => array(
             "id" => "$ids[$i]",
@@ -122,20 +111,20 @@ for ($i = 0; $i < $count; $i++) {
     $tempCoordLen = sizeof($splitCoOrds[$i]);
 
     if ($tempCoordLen === 2) {
-        $toBeEncoded[features][$i][geometry] = array(
+        $toBeEncoded1['features'][$i]['geometry'] = array(
             "type" => "Point",
             "coordinates" => [(double)$splitCoOrds[$i][0], (double)$splitCoOrds[$i][1]]
         );
  
     } else {
-        $toBeEncoded[features][$i][geometry] = array(
+        $toBeEncoded1['features'][$i]['geometry'] = array(
             "type" => "LineString",
             "coordinates" => []
         );
         
         for($j = 0; $j < $tempCoordLen - 1; $j+=2){
         
-            array_push($toBeEncoded[features][$i][geometry][coordinates], [(double)$splitCoOrds[$i][$j], (double)$splitCoOrds[$i][$j+1]]);
+            array_push($toBeEncoded1['features'][$i]['geometry']['coordinates'], [(double)$splitCoOrds[$i][$j], (double)$splitCoOrds[$i][$j+1]]);
         
         }
         unset($j);
@@ -143,9 +132,8 @@ for ($i = 0; $i < $count; $i++) {
     }
 }
 
-$json = json_encode($toBeEncoded);
+$json = json_encode($toBeEncoded1);
 
-file_put_contents("../geoJson/SHClosures.geojson", $json);
+file_put_contents("../json/SHClosures.json", $json);
 
-
-echo "######## END ######## END ######## END ######## END ######## END #### \n";
+echo "SHXMLToJSON end \n";

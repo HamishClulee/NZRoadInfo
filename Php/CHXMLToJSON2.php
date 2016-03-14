@@ -1,69 +1,10 @@
 <?php
 
+echo "CHXMLToJSON2 start - builds and encodes ChChEvents json \n";
+
 include "XMLStructReader.php";
 include "helperFunctions.php";
 
-echo "######## START ######## START ######## START ######## START ########\n";
-
-####### XML LOAD ####### XML LOAD ####### XML LOAD ####### XML LOAD #####
-//$curl_chch = curl_init('https://infoconnect1.highwayinfo.govt.nz/ic/jbi/TMP/REST/FeedService/');
-//$startCH_Time = microtime(true);
-//curl_setopt($curl_chch, CURLOPT_HTTPHEADER, array(
-//    'username: mjwynyard', 'password: Copper2004'
-//        )
-//);
-//curl_setopt($curl_chch, CURLOPT_RETURNTRANSFER, true);
-//$responseCH = curl_exec($curl_chch);
-//file_put_contents("../XML/chchTraffic.xml", $responseCH);
-//
-//$endCH_Time = microtime(true);
-//
-//echo "CHCH xml downloaded: " .($endCH_Time - $startCH_Time) ." seconds\n\n";
-
-####### XPATH ID TAG COUNT ####### XPATH ID TAG COUNT ####### 
-#
-$xmlTest = simplexml_load_file("../XML/chchTraffic.xml");
-$resultTest = $xmlTest->xpath("//tns:locations");
-$countTest = sizeof($resultTest);
-
-$xPathIds = $xmlTest->xpath("//tns:id");
-$xPathIdsCount = sizeof($xPathIds);
-
-
-####### REFACTOR ORIGINAL XML ####### REFACTOR ORIGINAL XML ####### 
-
-$xml = new XMLReader();
-$xml->open('../XML/chchTraffic.xml');
-
-$xmlRoadClosureString = "<roadClose>";
-
-while ($xml->read()) {
-
-    if ($xml->localName === 'roadClosures' && $xml->nodeType == XMLREADER::ELEMENT) {
-
-        $xmlRoadClosureString .= "<roadClosure>";
-        $xmlRoadClosureString .= $xml->readInnerXml();
-        $xmlRoadClosureString .= "</roadClosure>";
-    }
-}
-
-$xmlRoadClosureString .= "</roadClose>";
-
-file_put_contents("../XML/chchRoadClosures.xml", $xmlRoadClosureString);
-
-$xml->close();
-
-############## REMOVE CLOSURE NODES FROM CHCHTRAFFIC XML ##################
-$dom = new DOMDocument();
-$dom->load("../XML/chchTraffic.xml");
-$delete = $dom->getElementsByTagName('roadClosures');
-
-foreach ($delete as $node) {
-    $node->parentNode->removeChild($node);
-}
-
-$dom->save("../XML/chchTraffic.xml");
-####### READ CHCHTRAFFIC XML ####### READ CHCHTRAFFIC XML ####### 
 
 $x = new XMLReader();
 $x->open('../XML/chchTraffic.xml');
@@ -149,7 +90,6 @@ $x2ImpactStruct = array();
 $toBeEncoded1 = array("type" => "FeatureCollection",
     "features" => []);
 
-
 for ($i = 0; $i < $eventsCount; $i++) {
 
     $toBeEncoded1[features][$i] = array("type" => "Feature",
@@ -186,8 +126,6 @@ for ($i = 0; $i < $eventsCount; $i++) {
     $x2GeoStruct[] = xml_to_object($events[$i][geoXML]);
     $geoCount = sizeof($x2GeoStruct[$i]->children);
     
-    
-    
     for ($j = 0; $j < $geoCount; $j++) {
 
         $tmpGeoType = $x2GeoStruct[$i]->children[0]->children[1]->content;
@@ -199,36 +137,17 @@ for ($i = 0; $i < $eventsCount; $i++) {
         $closePolygon = array((double)$coordsFinal[0][0], (double)$coordsFinal[0][1]);
         $tmpFinalCoordLen = sizeof($coordsFinal);
         $coordsFinal[$tmpFinalCoordLen] = $closePolygon;
-        
+         
     }
-    
-    
 
     $toBeEncoded1[features][$i][properties][impact] = $tmpImpactString;
     $toBeEncoded1[features][$i][geometry][type] = "Polygon";
     $toBeEncoded1[features][$i][geometry][coordinates] = [$coordsFinal];
+       
 }
 
-
-//
-//
 $json = json_encode($toBeEncoded1);
 
-file_put_contents("../json/test.json", $json);
+file_put_contents("../json/ChChEvents.json", $json);
 
-
-######## PRINT BLOCK ######## PRINT BLOCK ######## PRINT BLOCK ######## 
-
-echo "\n";
-//print_r($tmpCoords);
-//echo "$final \n";
-//echo $str . "\n";
-//print_r($events);
-//print_r($toBeEncoded1);
-//print_r($x2GeoStruct);
-//print_r($newphrase);
-//print_r($ns);
-echo "\n";
-echo "\n";
-echo "######## END ######## END ######## END ######## END ########\n";
-
+echo "CHXMLToJSON2 end \n";
