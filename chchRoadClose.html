@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>NZ Road Info | State Highway Closures and Warnings.</title>
+    <link rel="shortcut icon" href="traffic-cone.ico">
+    <link rel="shortcut icon" href="traffic-cone.png">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
@@ -20,11 +22,11 @@
         nzRoadInfo.initialize = function() {
 
             //center lat/lon
-            var latlng = new google.maps.LatLng(-41, 173);
+            var latlng = new google.maps.LatLng(-43.5300, 172.6203);
 
             //map configutations
             var myOptions = {
-                zoom: 6,
+                zoom: 13,
                 center: latlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -61,7 +63,7 @@
 
             map.data.setStyle({
                 fillColor: 'red',
-                strokeWeight: 5,
+                strokeWeight: 2,
                 strokeColor: 'red',
                 fillOpacity: 0.5
             });
@@ -81,7 +83,7 @@
             <li><a class="scroll" href="SHClosures.html">State Highways - closures and warnings</a></li>
             <li><a class="scroll" href="#">Christchurch - road closures</a></li>
             <li><a class="scroll" href="chchTraffic.html">Christchurch - road warnings and events</a></li>
-            <li><a class="scroll" href="contact.html">Contact Us - Suggestions, Bug Reporting, Happy Thoughts!</a></li>
+            <li><a class="scroll" href="contact.php">Contact Us - Suggestions, Bug Reporting, Happy Thoughts!</a></li>
         </ul>
     </div>
     
