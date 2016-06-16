@@ -21,8 +21,6 @@
         <ul id="menu">
             <li><a class="scroll" href="#">About</a></li>
             <li><a class="scroll" href="SHClosures.html">State Highways - closures and warnings</a></li>
-            <li><a class="scroll" href="chchRoadClose.html">Christchurch - road closures</a></li>
-            <li><a class="scroll" href="chchTraffic.html">Christchurch - road warnings and events</a></li>
             <li><a class="scroll" href="contact.php">Contact Us - Suggestions, Bug Reporting, Happy Thoughts!</a></li>
         </ul>
     </div>
@@ -33,23 +31,32 @@
     
     <p>This is a personal project authored by Hamish Clulee and Matt Wynyard. NZ Road Info is not for profit and is 
         licensed under the MIT creative commons.</p>
-    <p><a href="https://github.com/TacosInFuture/NZRoadInfo">Github repository</a></p>
+    <p><a href="https://github.com/hamishclulee/NZRoadInfo">Github repository</a></p>
     <p>The data being displayed comes directly from the New Zealand Transport Agency. It is updated every 10 minutes.</p>
+    <p>NZTA ships its data as XML. One of the primary tasks of our server is to retrieve that XML and reform it as GeoJson</p>
+    <p>GeoJson is supported by the Google Maps API and renders directly using their data layer. Here is the GeoJson specification:</p>
+    <p><a href="http://geojson.org/">geojson.org</a></p>
+    <p>We are more than happy for people to make use of the GeoJson. Here are the URI:</p>
+    <div class="center-this">
+        <ul>
+            <li><a href="json/SHClosures.json">State Highway Closures and warnings</a></li>
+        </ul>
+    </div>
     <p>We encourage you to check the maps while traveling and let us know if it is or isn't accurate and to send 
     any and all suggestions on improvements to the service and quality of the information provided</p>
     <p><a href='contact.php'>Our contact page</a></p>
     
     <h1>Plans for the future</h1>
-    <p>Matt is currently developing a native iOS app and Hamish is working on a hybrid web app which will provide apps for android,
-        iOS and windows. We are interested to see the differences in performance between the native and hybrid apps.</p>
-    <p>The user experience when using the maps is also under development. Features to be added:</p>
+    <p>Matt is currently developing a native iOS app. The map will be undergoing sporadic updates in usability.</p>
+    <p>To be added:</p>
     <div class="center-this">
-        <ul>
-            <li>Search by address</li>
-            <li>Search by route</li>
-            <li>Filter events by type</li>
-            <li>Adding Auckland data/maps</li>
-        </ul>
+        
+            
+        <br>Filter events by type</br>
+        <br>Search by address</br>
+        <br>Search by route</br>
+        <br>Adding Auckland data/maps</br>
+        
     </div>
     
     <p>Enjoy!</p>
