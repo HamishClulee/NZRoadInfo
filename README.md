@@ -7,6 +7,6 @@ Takes XML from NZTA agency feeds and converts to GeoJson. C++ converts the NZMG 
 
 available at:
 
-http://wwww.nzroadinfo.xyz
+http://wwww.nzroadinfo.site
 
-Map will continue to display live NZTA data, updated every 10 minutes on the :00.00
+Map will continue to display live NZTA data, updated every hour minutes on the xx:30.00
